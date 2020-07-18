@@ -3,7 +3,7 @@
 img {
 	position: absolute;
 	top: 50%; left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -100%);
 }
 
 .scenery {
@@ -19,7 +19,7 @@ img {
 }
 
 #palm3 {
-	top: 0; left: 10%;
+	top: 80%; left: 10%;
 }
 
 #w_rook_upright {

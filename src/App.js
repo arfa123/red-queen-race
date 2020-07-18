@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
-import useWebAnimations from "@wellyshen/use-web-animations";
+import React, { useEffect, useState } from "react";
+import RedQueen from "./components/RedQueen";
+import Foreground1 from "./components/Foreground1";
+import Foreground2 from "./components/Foreground2";
+import Background1 from "./components/Background1";
+import Background2 from "./components/Background2";
 import "./App.css";
 
 function App() {
+
+	const [playbackRate, setPlaybackrate] = useState(1.5);
 
 	useEffect(() => {
 		document.addEventListener("click", goFaster);
@@ -12,36 +18,19 @@ function App() {
 		};
 	});
 
-	const spriteFrames = [
-		{ transform: "translateY(0)" },
-		{ transform: "translateY(-100%)" }
-	];
-
-	const { ref, getAnimation } = useWebAnimations({
-		keyframes: spriteFrames,
-		timing: {
-			duration: 600,
-			direction: "reverse",
-			fill: "forwards",
-			iterations: Infinity,
-			easing: "steps(7, end)"
-		},
-	});
-
-	const goFaster = () => {
-		getAnimation().updatePlaybackRate(getAnimation().playbackRate * 1.1);
-	};
+	const goFaster = () => setPlaybackrate(playbackRate * 1.1);
 
 	return (
 		<div className="wrapper">
-			<div className="sky"></div>
+			<div className="sky">
+				<h2 style={{ textAlign: "center" }}>Click to increase speed</h2>
+			</div>
 			<div className="earth">
-				<div id="red-queen_and_alice">
-					<img ref={ref}
-						src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/sprite_running-alice-queen_small.png"
-						srcSet="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/sprite_running-alice-queen.png 2x"
-						alt="Alice and the Red Queen running to stay in place." />
-				</div>
+				<RedQueen playbackRate={playbackRate} />
+				<Foreground1 playbackRate={playbackRate} />
+				<Foreground2 playbackRate={playbackRate} />
+				<Background1 playbackRate={playbackRate} />
+				<Background2 playbackRate={playbackRate} />
 			</div>
 		</div>
 	);
