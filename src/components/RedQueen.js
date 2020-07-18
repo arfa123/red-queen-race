@@ -21,7 +21,7 @@ const RedQueen = ({ playbackRate }) => {
 
 	useEffect(() => {
 		getAnimation().updatePlaybackRate(playbackRate);
-	}, [playbackRate]);
+	}, [playbackRate, getAnimation]);
 
 	return (
 		<div id="red-queen_and_alice">

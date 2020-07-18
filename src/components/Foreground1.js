@@ -21,7 +21,7 @@ const Foreground1 = ({ playbackRate }) => {
 
 	useEffect(() => {
 		getAnimation().currentTime = getAnimation().effect.getTiming().duration / 2;
-	}, []);
+	}, [getAnimation]);
 
 	useEffect(() => {
 		if (playbackRate < 0.8) {
@@ -31,7 +31,7 @@ const Foreground1 = ({ playbackRate }) => {
 		} else {
 			getAnimation().updatePlaybackRate(0);
 		}
-	}, [playbackRate]);
+	}, [playbackRate, getAnimation]);
 
 	return (
 		<div class="scenery" id="foreground1" ref={ref}>

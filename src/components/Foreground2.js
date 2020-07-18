@@ -27,7 +27,7 @@ const Foreground2 = ({ playbackRate }) => {
 		} else {
 			getAnimation().updatePlaybackRate(0);
 		}
-	}, [playbackRate]);
+	}, [playbackRate, getAnimation]);
 
 	return (
 		<div class="scenery" id="foreground2" ref={ref}>
